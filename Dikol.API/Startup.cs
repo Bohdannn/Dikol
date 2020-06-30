@@ -26,7 +26,7 @@ namespace Dikol.API
                 options.UseSqlite(_configuration.GetConnectionString("DikolDb"));
             });
 
-            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.AddControllers();
         }
