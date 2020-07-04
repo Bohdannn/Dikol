@@ -1,5 +1,5 @@
 using AutoMapper;
-using Dikol.API.Helpers.AutoMapper;
+using Dikol.API.Helpers.AutoMapper.Profiles;
 using Dikol.Core.Interfaces;
 using Dikol.Infrastructure;
 using Dikol.Infrastructure.Repositories;
