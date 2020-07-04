@@ -39,16 +39,7 @@ namespace Dikol.API.Controllers
 
             var products = await _productRepo.GetAllAsync(specification);
 
-            return Ok(products.Select(product => new ProductDTO
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.Description,
-                PictureUrl = product.PictureUrl,
-                Price = product.Price,
-                ProductBrand = product.ProductBrand.Name,
-                ProductType = product.ProductType.Name
-            }).ToList());
+            return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(products));
         }
 
         [HttpGet("{id}")]
@@ -58,7 +49,7 @@ namespace Dikol.API.Controllers
 
             var product = await _productRepo.GetEntityAsync(specification);
 
-            return _mapper.Map<Product, ProductDTO>(product);
+            return Ok(_mapper.Map<Product, ProductDTO>(product));
         }
 
         [HttpGet("brands")]
