@@ -11,7 +11,7 @@ namespace Dikol.Core.Specifications
         public ProductsWithTypesAndBrandsSpecification()
         {
             AddInclude(x => x.ProductBrand);
-            AddInclude(x => x.ProductBrand);
+            AddInclude(x => x.ProductType);
         }
 
         public ProductsWithTypesAndBrandsSpecification(int productId) : base(p => p.Id == productId)

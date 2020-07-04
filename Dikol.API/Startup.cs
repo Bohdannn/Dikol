@@ -1,3 +1,5 @@
+using AutoMapper;
+using Dikol.API.Helpers.AutoMapper;
 using Dikol.Core.Interfaces;
 using Dikol.Infrastructure;
 using Dikol.Infrastructure.Repositories;
@@ -27,6 +29,7 @@ namespace Dikol.API
             });
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddAutoMapper(typeof(MappingProfiles));
 
             services.AddControllers();
         }
