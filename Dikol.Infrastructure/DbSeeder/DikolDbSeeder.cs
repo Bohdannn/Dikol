@@ -16,6 +16,18 @@ namespace Dikol.Infrastructure.DbSeeder
         {
             #region Code smell
 
+            if (!dikolDbContext.ProductTypes.Any())
+            {
+                var productTypesData = File.ReadAllText("../Dikol.Infrastructure/DbSeeder/Data/product-types.json");
+
+                var productTypes = JsonSerializer.Deserialize<List<ProductType>>(productTypesData);
+
+                foreach (var productType in productTypes)
+                {
+                    dikolDbContext.ProductTypes.Add(productType);
+                }
+            }
+
             // TODO: Make it generic
             if (!dikolDbContext.ProductBrands.Any())
             {
@@ -26,18 +38,6 @@ namespace Dikol.Infrastructure.DbSeeder
                 foreach (var brand in brands)
                 {
                     dikolDbContext.ProductBrands.Add(brand);
-                }
-            }
-
-            if (!dikolDbContext.ProductTypes.Any())
-            {
-                var productTypesData = File.ReadAllText("../Dikol.Infrastructure/DbSeeder/Data/product-types.json");
-
-                var productTypes = JsonSerializer.Deserialize<List<ProductType>>(productTypesData);
-
-                foreach (var productType in productTypes)
-                {
-                    dikolDbContext.ProductTypes.Add(productType);
                 }
             }
 

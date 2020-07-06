@@ -1,20 +1,102 @@
 [
   {
-    "Name": "Nike"
+    "Name": "Burberry",
+    "ProductTypeId": 1
   },
   {
-    "Name": "Puma"
+    "Name": "Dolce & Gabbana",
+    "ProductTypeId": 1
   },
   {
-    "Name": "Clarks"
+    "Name": "Gucci",
+    "ProductTypeId": 1
   },
   {
-    "Name": "Timberland"
+    "Name": "Brioni",
+    "ProductTypeId": 1
   },
   {
-    "Name": "Grenson"
+    "Name": "Johnston & Murphy",
+    "ProductTypeId": 2
   },
   {
-    "Name": "Dr Martens"
+    "Name": "Allen Edmonds",
+    "ProductTypeId": 2
+  },
+  {
+    "Name": "Clarks",
+    "ProductTypeId": 2
+  },
+  {
+    "Name": "Magnanni",
+    "ProductTypeId": 2
+  },
+  {
+    "Name": "Luigi Borrelli",
+    "ProductTypeId": 3
+  },
+  {
+    "Name": "Finamore",
+    "ProductTypeId": 3
+  },
+  {
+    "Name": "Battistoni",
+    "ProductTypeId": 3
+  },
+  {
+    "Name": "Brioni",
+    "ProductTypeId": 3
+  },
+  {
+    "Name": "Bonobos",
+    "ProductTypeId": 4
+  },
+  {
+    "Name": "J. Crew",
+    "ProductTypeId": 4
+  },
+  {
+    "Name": "Everlane",
+    "ProductTypeId": 4
+  },
+  {
+    "Name": "Shon Mott",
+    "ProductTypeId": 4
+  },
+  {
+    "Name": "Belstaff",
+    "ProductTypeId": 5
+  },
+  {
+    "Name": "Uniqlo",
+    "ProductTypeId": 5
+  },
+  {
+    "Name": "Burberry",
+    "ProductTypeId": 5
+  },
+  {
+    "Name": "Moncler",
+    "ProductTypeId": 5
+  },
+  {
+    "Name": "TIMEX",
+    "ProductTypeId": 6
+  },
+  {
+    "Name": "Fossil",
+    "ProductTypeId": 6
+  },
+  {
+    "Name": "Alexander McQueen",
+    "ProductTypeId": 6
+  },
+  {
+    "Name": "Diesel",
+    "ProductTypeId": 6
+  },
+  {
+    "Name": "Bellroy",
+    "ProductTypeId": 6
   }
 ]

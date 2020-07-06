@@ -17,21 +17,23 @@ namespace Dikol.API
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
                     var context = services.GetRequiredService<DikolDbContext>();
+
                     await context.Database.MigrateAsync();
                     await DikolDbSeeder.SeedAsync(context);
+
+                    host.Run();
                 }
                 catch (System.Exception ex)
                 {
+                    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                     var logger = loggerFactory.CreateLogger<Program>();
+
                     logger.LogError(ex.Message);
                 }
             }
-
-            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
