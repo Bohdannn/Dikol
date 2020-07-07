@@ -12,7 +12,7 @@ namespace Dikol.Core.Specifications
             {
                 switch (sort)
                 {
-                    case "proceAsc":
+                    case "priceAsc":
                         AddOrderBy(p => p.Price);
                         break;
                     case "priceDesc":
@@ -22,6 +22,10 @@ namespace Dikol.Core.Specifications
                         AddOrderBy(p => p.Name);
                         break;
                 }
+            }
+            else
+            {
+                AddOrderBy(p => p.Name);
             }
         }
 
