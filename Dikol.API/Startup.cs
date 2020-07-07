@@ -1,9 +1,11 @@
 using AutoMapper;
 using Dikol.API.Errors;
+using Dikol.API.Extensions;
 using Dikol.API.Helpers.AutoMapper.Profiles;
 using Dikol.API.Middlewares;
 using Dikol.Core.Interfaces;
 using Dikol.Infrastructure;
+using Dikol.Infrastructure.IoC.Extensions;
 using Dikol.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,7 +35,8 @@ namespace Dikol.API
                 options.UseSqlite(_configuration.GetConnectionString("DikolDb"));
             });
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddApplicationServices();
+
             services.AddAutoMapper(typeof(MappingProfiles));
 
             services.AddControllers();
@@ -57,14 +60,7 @@ namespace Dikol.API
                 };
             });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "Dikol API",
-                    Version = "v1"
-                });
-            });
+            services.AddSwaggerDocumentation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,11 +83,7 @@ namespace Dikol.API
 
             app.UseStaticFiles();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-               c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dikol API v1");
-            });
+            app.UseSwaggerDocumentation();
 
             app.UseEndpoints(endpoints =>
             {

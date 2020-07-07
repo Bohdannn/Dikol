@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Dikol.Infrastructure.IoC\Dikol.Infrastructure.IoC.csproj" />
     <ProjectReference Include="..\Dikol.Infrastructure\Dikol.Infrastructure.csproj" />
   </ItemGroup>
 

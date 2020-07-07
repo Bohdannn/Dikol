@@ -1,16 +1,28 @@
 ﻿using Dikol.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
 
 namespace Dikol.Core.Specifications
 {
     public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
     {
-        public ProductsWithTypesAndBrandsSpecification()
+        public ProductsWithTypesAndBrandsSpecification(string sort)
         {
             IncludeBrandsAndTypes();
+
+            if (!string.IsNullOrEmpty(sort))
+            {
+                switch (sort)
+                {
+                    case "proceAsc":
+                        AddOrderBy(p => p.Price);
+                        break;
+                    case "priceDesc":
+                        AddOrderByDescending(p => p.Price);
+                        break;
+                    default:
+                        AddOrderBy(p => p.Name);
+                        break;
+                }
+            }
         }
 
         public ProductsWithTypesAndBrandsSpecification(int productId) : base(p => p.Id == productId)

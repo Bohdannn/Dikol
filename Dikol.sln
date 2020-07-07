@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dikol.API", "Dikol.API\Dikol.API.csproj", "{72C337C1-A4F2-44C7-B967-F82960F5C9CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dikol.API", "Dikol.API\Dikol.API.csproj", "{72C337C1-A4F2-44C7-B967-F82960F5C9CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dikol.Core", "Dikol.Core\Dikol.Core.csproj", "{9776E438-8F8A-4AF4-8C76-780D95E733DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dikol.Core", "Dikol.Core\Dikol.Core.csproj", "{9776E438-8F8A-4AF4-8C76-780D95E733DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dikol.Infrastructure", "Dikol.Infrastructure\Dikol.Infrastructure.csproj", "{659F979E-6F25-43E2-9510-122B0CABA614}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dikol.Infrastructure", "Dikol.Infrastructure\Dikol.Infrastructure.csproj", "{659F979E-6F25-43E2-9510-122B0CABA614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dikol.Infrastructure.IoC", "Dikol.Infrastructure.IoC\Dikol.Infrastructure.IoC.csproj", "{707CE199-8EBC-4CA9-950C-A37319A79E7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{659F979E-6F25-43E2-9510-122B0CABA614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{659F979E-6F25-43E2-9510-122B0CABA614}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{659F979E-6F25-43E2-9510-122B0CABA614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{707CE199-8EBC-4CA9-950C-A37319A79E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{707CE199-8EBC-4CA9-950C-A37319A79E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{707CE199-8EBC-4CA9-950C-A37319A79E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{707CE199-8EBC-4CA9-950C-A37319A79E7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
