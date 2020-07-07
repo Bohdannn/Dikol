@@ -33,9 +33,10 @@ namespace Dikol.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductDTO>>> GetProducts(string sort)
+        public async Task<ActionResult<IReadOnlyList<ProductDTO>>> GetProducts(
+            string sort, int? brandId, int? typeId)
         {
-            var specification = new ProductsWithTypesAndBrandsSpecification(sort);
+            var specification = new ProductsWithTypesAndBrandsSpecification(sort, brandId, typeId);
 
             var products = await _productRepo.GetAllAsync(specification);
 

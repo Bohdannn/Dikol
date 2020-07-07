@@ -4,7 +4,11 @@ namespace Dikol.Core.Specifications
 {
     public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
     {
-        public ProductsWithTypesAndBrandsSpecification(string sort)
+        public ProductsWithTypesAndBrandsSpecification(string sort, int? brandId, int? typeId)
+            : base(criteria: p => 
+                (!brandId.HasValue || p.ProductBrandId == brandId) &&
+                (!typeId.HasValue || p.ProductTypeId == typeId)
+            )
         {
             IncludeBrandsAndTypes();
 
@@ -29,7 +33,7 @@ namespace Dikol.Core.Specifications
             }
         }
 
-        public ProductsWithTypesAndBrandsSpecification(int productId) : base(p => p.Id == productId)
+        public ProductsWithTypesAndBrandsSpecification(int productId) : base(criteria: p => p.Id == productId)
         {
             IncludeBrandsAndTypes();
         }
