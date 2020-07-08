@@ -1,8 +1,5 @@
 ﻿using Dikol.Core.Entities;
 using Dikol.Core.Specifications.Params;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Dikol.Core.Specifications.ProductSpecifications
 {
@@ -10,6 +7,7 @@ namespace Dikol.Core.Specifications.ProductSpecifications
     {
         public ProductsWithFiltersForCountSpecification(ProductSpecificationParams productsParams)
             : base(criteria: p =>
+                (string.IsNullOrEmpty(productsParams.Search) || p.Name.ToLower().Contains(productsParams.Search)) &&
                 (!productsParams.BrandId.HasValue || p.ProductBrandId == productsParams.BrandId) &&
                 (!productsParams.TypeId.HasValue || p.ProductTypeId == productsParams.TypeId)
             )
