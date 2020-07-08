@@ -1,20 +1,22 @@
 ﻿using Dikol.Core.Entities;
+using Dikol.Core.Specifications.Params;
 
-namespace Dikol.Core.Specifications
+namespace Dikol.Core.Specifications.ProductSpecifications
 {
     public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
     {
-        public ProductsWithTypesAndBrandsSpecification(string sort, int? brandId, int? typeId)
+        public ProductsWithTypesAndBrandsSpecification(ProductSpecificationParams productsParams)
             : base(criteria: p => 
-                (!brandId.HasValue || p.ProductBrandId == brandId) &&
-                (!typeId.HasValue || p.ProductTypeId == typeId)
+                (!productsParams.BrandId.HasValue || p.ProductBrandId == productsParams.BrandId) &&
+                (!productsParams.TypeId.HasValue || p.ProductTypeId == productsParams.TypeId)
             )
         {
             IncludeBrandsAndTypes();
+            ApplyPaging(CalculateSkip(productsParams.PageSize, productsParams.PageIndex), productsParams.PageSize);
 
-            if (!string.IsNullOrEmpty(sort))
+            if (!string.IsNullOrEmpty(productsParams.SortBy))
             {
-                switch (sort)
+                switch (productsParams.SortBy)
                 {
                     case "priceAsc":
                         AddOrderBy(p => p.Price);
@@ -43,5 +45,7 @@ namespace Dikol.Core.Specifications
             AddInclude(x => x.ProductBrand);
             AddInclude(x => x.ProductType);
         }
+
+        private int CalculateSkip(int pageSize, int pageIndex) => pageSize * (pageIndex - 1);
     }
 }

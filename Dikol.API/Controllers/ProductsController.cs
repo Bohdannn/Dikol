@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Dikol.API.DTOs;
 using Dikol.API.Errors;
 using Dikol.Core.Entities;
 using Dikol.Core.Interfaces;
-using Dikol.Core.Specifications;
-using Dikol.Infrastructure;
+using Dikol.Core.Specifications.Params;
+using Dikol.Core.Specifications.ProductSpecifications;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Dikol.API.Helpers.Pagination;
 
 namespace Dikol.API.Controllers
 {
@@ -32,15 +31,25 @@ namespace Dikol.API.Controllers
             _mapper = mapper;
         }
 
+        #region Products
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductDTO>>> GetProducts(
-            string sort, int? brandId, int? typeId)
+        public async Task<ActionResult<GenericPagination<ProductDTO>>> GetProducts(
+            [FromQuery] ProductSpecificationParams productsParams)
         {
-            var specification = new ProductsWithTypesAndBrandsSpecification(sort, brandId, typeId);
+            var productsWithTypesAndBrandsSpec = new ProductsWithTypesAndBrandsSpecification(productsParams);
+            var productCountSpec = new ProductsWithFiltersForCountSpecification(productsParams);
 
-            var products = await _productRepo.GetAllAsync(specification);
+            var productsCount = await _productRepo.CountAsync(productCountSpec);
 
-            return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(products));
+            var products = await _productRepo.GetAllAsync(productsWithTypesAndBrandsSpec);
+            var productsDTO = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(products);
+
+            return Ok(new GenericPagination<ProductDTO>(
+                productsParams.PageIndex,
+                productsParams.PageSize, 
+                productsCount, 
+                productsDTO)
+                );
         }
 
         [HttpGet("{id}")]
@@ -56,7 +65,8 @@ namespace Dikol.API.Controllers
                 return NotFound(new ApiResponse(404));
 
             return Ok(_mapper.Map<Product, ProductDTO>(product));
-        }
+        } 
+        #endregion
 
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()

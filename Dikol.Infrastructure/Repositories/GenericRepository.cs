@@ -21,13 +21,18 @@ namespace Dikol.Infrastructure.Repositories
             => SpecificationEvaluator<T>.GetQuery(_dikolDbContext.Set<T>().AsQueryable(), specification);
 
         public async Task<IReadOnlyList<T>> GetAllAsync() => await _dikolDbContext.Set<T>().ToListAsync();
+        public async Task<T> GetByIdAsync(int id) => await _dikolDbContext.Set<T>().FindAsync(id);
+        public async Task<int> CountAsync() => await _dikolDbContext.Set<T>().CountAsync();
 
         public async Task<IReadOnlyList<T>> GetAllAsync(ISpecification<T> specification)
             => await ApplySpecification(specification).ToListAsync();
 
-        public async Task<T> GetByIdAsync(int id) => await _dikolDbContext.Set<T>().FindAsync(id);
-
         public async Task<T> GetEntityAsync(ISpecification<T> specification) 
             => await ApplySpecification(specification).SingleOrDefaultAsync();
+
+        public async Task<int> CountAsync(ISpecification<T> specification)
+            => await ApplySpecification(specification).CountAsync();
+
+        
     }
 }

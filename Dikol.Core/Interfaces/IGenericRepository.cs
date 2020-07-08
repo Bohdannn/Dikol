@@ -9,8 +9,10 @@ namespace Dikol.Core.Interfaces
     {
         Task<T> GetByIdAsync(int id);
         Task<T> GetEntityAsync(ISpecification<T> specification);
+        Task<int> CountAsync();
 
         Task<IReadOnlyList<T>> GetAllAsync();
         Task<IReadOnlyList<T>> GetAllAsync(ISpecification<T> specification);
+        Task<int> CountAsync(ISpecification<T> specification);
     }
 }
