@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dikol.Core", "Dikol.Core\Di
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dikol.Infrastructure", "Dikol.Infrastructure\Dikol.Infrastructure.csproj", "{659F979E-6F25-43E2-9510-122B0CABA614}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dikol.Infrastructure.IoC", "Dikol.Infrastructure.IoC\Dikol.Infrastructure.IoC.csproj", "{707CE199-8EBC-4CA9-950C-A37319A79E7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dikol.Infrastructure.IoC", "Dikol.Infrastructure.IoC\Dikol.Infrastructure.IoC.csproj", "{707CE199-8EBC-4CA9-950C-A37319A79E7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
